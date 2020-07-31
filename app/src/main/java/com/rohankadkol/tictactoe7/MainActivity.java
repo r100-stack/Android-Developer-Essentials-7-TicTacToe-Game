@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
             {Team.EMPTY, Team.EMPTY, Team.EMPTY}
     };
 
+    private boolean isBoardActive = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     public void onTileClicked(View view) {
         int id = view.getId();
         Integer[] indices = mIdIndexMap.get(id);
-        if (board[indices[0]][indices[1]] != Team.EMPTY) {
+        if (!isBoardActive || board[indices[0]][indices[1]] != Team.EMPTY) {
             return;
         }
 
@@ -82,101 +84,113 @@ public class MainActivity extends AppCompatActivity {
         imageView.setImageResource(image);
 
         board[indices[0]][indices[1]] = mTurn;
+
+        checkWon(id);
+
         mTurn = mTurn == Team.LSU ? Team.ALABAMA : Team.LSU;
     }
 
     private void checkWon(int tileId) {
         switch (tileId) {
             case R.id.iv_00:
-                if (areThreeEqual(board[0][0], board[0][1], board[0][2])) {
-                    won(new Integer[]{R.id.iv_00, R.id.iv_01, R.id.iv_02});
-                } else if (areThreeEqual(board[0][0], board[1][1], board[2][2])) {
-                    won(new Integer[]{R.id.iv_00, R.id.iv_11, R.id.iv_22});
-                } else if (areThreeEqual(board[0][0],board[1][0], board[2][0])) {
-                    won(new Integer[]{R.id.iv_00, R.id.iv_10, R.id.iv_20});
-                }
+                isBoardActive = !(horizontal1() || diagonal1() || vertical1());
                 break;
             case R.id.iv_01:
-                if (areThreeEqual(board[0][0], board[0][1], board[0][2])) {
-                    won(new Integer[]{R.id.iv_00, R.id.iv_01, R.id.iv_02});
-                } else if (areThreeEqual(board[0][1], board[1][1], board[2][1])) {
-                    won(new Integer[]{R.id.iv_01, R.id.iv_11, R.id.iv_21});
-                }
+                isBoardActive = !(horizontal1() || vertical2());
                 break;
             case R.id.iv_02:
-                if (areThreeEqual(board[0][0], board[0][1], board[0][2])) {
-                    won(new Integer[]{R.id.iv_00, R.id.iv_01, R.id.iv_02});
-                } else if (areThreeEqual(board[0][2], board[1][1], board[2][0])) {
-                    won(new Integer[]{R.id.iv_02, R.id.iv_11, R.id.iv_20});
-                } else if (areThreeEqual(board[0][2], board[1][2], board[2][2])) {
-                    won(new Integer[]{R.id.iv_02, R.id.iv_12, R.id.iv_22});
-                }
+                isBoardActive = !(horizontal1() || diagonal2() || vertical3());
                 break;
             case R.id.iv_10:
-                if (areThreeEqual(board[0][0], board[1][0], board[2][0])) {
-                    won(new Integer[]{R.id.iv_00, R.id.iv_10, R.id.iv_20});
-                } else if (areThreeEqual(board[1][0], board[1][1], board[1][2])) {
-                    won(new Integer[]{R.id.iv_10, R.id.iv_11, R.id.iv_12});
-                }
+                isBoardActive = !(horizontal2() || vertical1());
                 break;
             case R.id.iv_11:
-                if (areThreeEqual())
+                isBoardActive = !(horizontal2() ||  diagonal1() || vertical2() || diagonal2());
+                break;
+            case R.id.iv_12:
+                isBoardActive = !(vertical3() || horizontal2());
+                break;
+            case R.id.iv_20:
+                isBoardActive = !(vertical1() || diagonal2() || horizontal3());
+                break;
+            case R.id.iv_21:
+                isBoardActive = !(vertical2() || horizontal3());
+                break;
+            case R.id.iv_22:
+                isBoardActive = !(vertical3() || diagonal1() || horizontal3());
+                break;
         }
     }
 
-    private void horizontal1() {
+    private boolean horizontal1() {
         if (areThreeEqual(board[0][0], board[0][1], board[0][2])) {
             won(new Integer[]{R.id.iv_00, R.id.iv_01, R.id.iv_02});
+            return true;
         }
+        return false;
     }
 
-    private void horizontal2() {
+    private boolean horizontal2() {
         if (areThreeEqual(board[1][0], board[1][1], board[1][2])) {
             won(new Integer[]{R.id.iv_10, R.id.iv_11, R.id.iv_12});
+            return true;
         }
+        return false;
     }
 
-    private void horizontal3() {
+    private boolean horizontal3() {
         if (areThreeEqual(board[2][0], board[2][1], board[2][2])) {
             won(new Integer[]{R.id.iv_20, R.id.iv_21, R.id.iv_22});
+            return true;
         }
+        return false;
     }
 
-    private void vertical1() {
+    private boolean vertical1() {
         if (areThreeEqual(board[0][0], board[1][0], board[2][0])) {
             won(new Integer[]{R.id.iv_00, R.id.iv_10, R.id.iv_20});
+            return true;
         }
+        return false;
     }
 
-    private void vertical2() {
+    private boolean vertical2() {
         if (areThreeEqual(board[0][1], board[1][1], board[2][1])) {
             won(new Integer[]{R.id.iv_01, R.id.iv_11, R.id.iv_21});
+            return true;
         }
+        return false;
     }
 
-    private void vertical3() {
+    private boolean vertical3() {
         if (areThreeEqual(board[0][2], board[1][2], board[2][2])) {
             won(new Integer[]{R.id.iv_02, R.id.iv_12, R.id.iv_22});
+            return true;
         }
+        return false;
     }
 
-    private void diagonal1() {
+    private boolean diagonal1() {
         if (areThreeEqual(board[0][0], board[1][1], board[2][2])) {
             won(new Integer[]{R.id.iv_00, R.id.iv_11, R.id.iv_22});
+            return true;
         }
+        return false;
     }
 
-    private void diagonal2() {
+    private boolean diagonal2() {
         if (areThreeEqual(board[0][2], board[1][1], board[2][0])) {
             won(new Integer[]{R.id.iv_02, R.id.iv_11, R.id.iv_20});
+            return true;
         }
+        return false;
     }
 
     private void won(Integer[] winingIds) {
         int[] imageViewIds = new int[]{R.id.iv_00, R.id.iv_01, R.id.iv_02, R.id.iv_10, R.id.iv_11, R.id.iv_12, R.id.iv_20, R.id.iv_21, R.id.iv_22};
         for (int imageId : imageViewIds) {
             if (imageId != winingIds[0] && imageId != winingIds[1] && imageId != winingIds[2]) {
-                mIdTileMap.get(imageId).setAlpha((float) 0.5);
+                mIdTileMap.get(imageId).setAlpha((float) 0.1);
             }
         }
     }
