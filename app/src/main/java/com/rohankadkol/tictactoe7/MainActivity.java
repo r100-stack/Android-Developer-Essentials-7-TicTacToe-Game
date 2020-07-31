@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         int[] imageViewIds = new int[]{R.id.iv_00, R.id.iv_01, R.id.iv_02, R.id.iv_10, R.id.iv_11, R.id.iv_12, R.id.iv_20, R.id.iv_21, R.id.iv_22};
         for (int imageId : imageViewIds) {
             if (imageId != winingIds[0] && imageId != winingIds[1] && imageId != winingIds[2]) {
-                mIdTileMap.get(imageId).setAlpha((float) 0.2);
+                mIdTileMap.get(imageId).setAlpha((float) 0.4);
             }
         }
     }
