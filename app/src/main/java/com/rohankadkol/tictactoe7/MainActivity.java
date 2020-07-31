@@ -1,8 +1,12 @@
 package com.rohankadkol.tictactoe7;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -190,12 +194,42 @@ public class MainActivity extends AppCompatActivity {
         int[] imageViewIds = new int[]{R.id.iv_00, R.id.iv_01, R.id.iv_02, R.id.iv_10, R.id.iv_11, R.id.iv_12, R.id.iv_20, R.id.iv_21, R.id.iv_22};
         for (int imageId : imageViewIds) {
             if (imageId != winingIds[0] && imageId != winingIds[1] && imageId != winingIds[2]) {
-                mIdTileMap.get(imageId).setAlpha((float) 0.1);
+                mIdTileMap.get(imageId).setAlpha((float) 0.2);
             }
         }
     }
 
     private <T> boolean areThreeEqual(T a, T b, T c) {
         return a == b && b == c;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_reset) {
+            resetApp();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void resetApp() {
+        isBoardActive = true;
+        mTurn = Team.LSU;
+        board = new Team[][] {
+                {Team.EMPTY, Team.EMPTY, Team.EMPTY},
+                {Team.EMPTY, Team.EMPTY, Team.EMPTY},
+                {Team.EMPTY, Team.EMPTY, Team.EMPTY}
+        };
+        int[] imageViewIds = new int[]{R.id.iv_00, R.id.iv_01, R.id.iv_02, R.id.iv_10, R.id.iv_11, R.id.iv_12, R.id.iv_20, R.id.iv_21, R.id.iv_22};
+        for (int imageId : imageViewIds) {
+            mIdTileMap.get(imageId).setImageResource(R.drawable.blank_transparent_square);
+            mIdTileMap.get(imageId).setAlpha((float) 1);
+        }
     }
 }
