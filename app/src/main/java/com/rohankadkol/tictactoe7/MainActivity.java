@@ -42,11 +42,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TODO (2): Use findViewById() to initialize all the above global ImageView variables.
+        // TODO COMPLETED (2): Use findViewById() to initialize all the above global ImageView variables.
+        mIv00 = findViewById(R.id.iv_00);
+        mIv01 = findViewById(R.id.iv_01);
+        mIv02 = findViewById(R.id.iv_02);
+        mIv10 = findViewById(R.id.iv_10);
+        mIv11 = findViewById(R.id.iv_11);
+        mIv12 = findViewById(R.id.iv_12);
+        mIv20 = findViewById(R.id.iv_20);
+        mIv21 = findViewById(R.id.iv_21);
+        mIv22 = findViewById(R.id.iv_22);
     }
 
     public void onTileClicked(View view) {
-        // TODO (3): This method should be called when any tile is clicked.
+        // TODO COMPLETED (3): This method should be called when any tile is clicked.
         //  Hence, add this to the onClick property of all the tiles (ImageViews)
     }
 
