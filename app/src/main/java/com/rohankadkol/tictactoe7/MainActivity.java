@@ -41,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
     //  Key = XML Id (Integer)
     //  Value = Corresponding Java imageView variable (ImageView)
     //  Call it mIdTileMap
+    private HashMap<Integer, ImageView> mIdTileMap = new HashMap<>();
 
     // TODO (4): Instead of using long switch statements, create a HashMap for getting the indices of each board location.
     //  Key = XML Id (Integer)
     //  Value = int array with the corresponding two indices (int[])
     //  Call it mIdIndexMap
+    private HashMap<Integer, Integer[]> mIdIndexMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,23 +65,52 @@ public class MainActivity extends AppCompatActivity {
         mIv22 = findViewById(R.id.iv_22);
 
         // TODO (5): Populate mIdTileMap
+        mIdTileMap.put(R.id.iv_00, mIv00);
+        mIdTileMap.put(R.id.iv_01, mIv01);
+        mIdTileMap.put(R.id.iv_02, mIv02);
+        mIdTileMap.put(R.id.iv_10, mIv10);
+        mIdTileMap.put(R.id.iv_11, mIv11);
+        mIdTileMap.put(R.id.iv_12, mIv12);
+        mIdTileMap.put(R.id.iv_20, mIv20);
+        mIdTileMap.put(R.id.iv_21, mIv21);
+        mIdTileMap.put(R.id.iv_22, mIv22);
 
         // TODO (6): Populate mIdIndexMap
+        mIdIndexMap.put(R.id.iv_00, new Integer[]{0, 0});
+        mIdIndexMap.put(R.id.iv_01, new Integer[]{0, 1});
+        mIdIndexMap.put(R.id.iv_02, new Integer[]{0, 2});
+        mIdIndexMap.put(R.id.iv_10, new Integer[]{1, 0});
+        mIdIndexMap.put(R.id.iv_11, new Integer[]{1, 1});
+        mIdIndexMap.put(R.id.iv_12, new Integer[]{1, 2});
+        mIdIndexMap.put(R.id.iv_20, new Integer[]{2, 0});
+        mIdIndexMap.put(R.id.iv_21, new Integer[]{2, 1});
+        mIdIndexMap.put(R.id.iv_22, new Integer[]{2, 2});
     }
 
     public void onTileClicked(View view) {
         // TODO (1): Store the clicked imageView id in a variable
+        int id = view.getId();
 
         // TODO (2): If the board isn't active or if the board's clicked position already contains an
         //  entry, then return out of the method
+        Integer[] indices = mIdIndexMap.get(id);
+        if (!isBoardActive || board[indices[0]][indices[1]] != Team.EMPTY) {
+            return;
+        }
 
         // TODO (7): Decide which image to display depending on the turn
+        int image = mTurn == Team.LSU ? R.drawable.lsu_logo : R.drawable.alabama_logo;
+        ImageView imageView = mIdTileMap.get(id);
+        imageView.setImageResource(image);
 
         // TODO (8): Update the board 2D array
+        board[indices[0]][indices[1]] = mTurn;
 
         // TODO (9): Check if anyone won. Pass the id variable created earlier as a parameter
+        checkWon(id);
 
         // TODO (10): Finally, update the mTurn variable.
+        mTurn = mTurn == Team.LSU ? Team.ALABAMA : Team.LSU;
     }
 
     /**
