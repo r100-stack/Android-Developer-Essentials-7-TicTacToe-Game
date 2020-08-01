@@ -125,8 +125,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
-
-    // TODO (1): Similar to the above three methods, add checkWin methods for vertical1, vertical2, vertical3, diagonal1, diagonal2
+    
     private boolean vertical1() {
         if (areThreeEqual(board[0][0], board[1][0], board[2][0])) {
             won(new Integer[]{R.id.iv_00, R.id.iv_10, R.id.iv_20});
