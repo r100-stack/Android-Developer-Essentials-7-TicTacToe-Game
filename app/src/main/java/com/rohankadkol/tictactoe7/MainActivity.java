@@ -69,28 +69,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void onTileClicked(View view) {
         // TODO (1): Store the clicked imageView id in a variable
-        int id = view.getId();
 
         // TODO (2): If the board isn't active or if the board's clicked position already contains an
         //  entry, then return out of the method
-        Integer[] indices = mIdIndexMap.get(id);
-        if (!isBoardActive || board[indices[0]][indices[1]] != Team.EMPTY) {
-            return;
-        }
 
         // TODO (7): Decide which image to display depending on the turn
-        int image = mTurn == Team.LSU ? R.drawable.lsu_logo : R.drawable.alabama_logo;
-        ImageView imageView = mIdTileMap.get(id);
-        imageView.setImageResource(image);
 
         // TODO (8): Update the board 2D array
-        board[indices[0]][indices[1]] = mTurn;
 
         // TODO (9): Check if anyone won. Pass the id variable created earlier as a parameter
-        checkWon(id);
 
         // TODO (10): Finally, update the mTurn variable.
-        mTurn = mTurn == Team.LSU ? Team.ALABAMA : Team.LSU;
     }
 
     /**
