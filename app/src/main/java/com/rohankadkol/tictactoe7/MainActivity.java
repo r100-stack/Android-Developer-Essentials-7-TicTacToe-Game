@@ -37,13 +37,15 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isBoardActive = true;
 
-    // TODO: Instead of using long switch statements, create a HashMap for getting the Java imageView variable.
+    // TODO (3): Instead of using long switch statements, create a HashMap for getting the Java imageView variable.
     //  Key = XML Id (Integer)
     //  Value = Corresponding Java imageView variable (ImageView)
+    //  Call it mIdTileMap
 
-    // TODO: Instead of using long switch statements, create a HashMap for getting the indices of each board location.
+    // TODO (4): Instead of using long switch statements, create a HashMap for getting the indices of each board location.
     //  Key = XML Id (Integer)
     //  Value = int array with the corresponding two indices (int[])
+    //  Call it mIdIndexMap
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,31 +61,35 @@ public class MainActivity extends AppCompatActivity {
         mIv20 = findViewById(R.id.iv_20);
         mIv21 = findViewById(R.id.iv_21);
         mIv22 = findViewById(R.id.iv_22);
+
+        // TODO (5): Populate mIdTileMap
+
+        // TODO (6): Populate mIdIndexMap
     }
 
     public void onTileClicked(View view) {
-        // TODO: Store the clicked imageView id in a variable
+        // TODO (1): Store the clicked imageView id in a variable
         int id = view.getId();
 
-        // TODO: If the board isn't active or if the board's clicked position already contains an
+        // TODO (2): If the board isn't active or if the board's clicked position already contains an
         //  entry, then return out of the method
         Integer[] indices = mIdIndexMap.get(id);
         if (!isBoardActive || board[indices[0]][indices[1]] != Team.EMPTY) {
             return;
         }
 
-        // TODO: Decide which image to display depending on the turn
+        // TODO (7): Decide which image to display depending on the turn
         int image = mTurn == Team.LSU ? R.drawable.lsu_logo : R.drawable.alabama_logo;
         ImageView imageView = mIdTileMap.get(id);
         imageView.setImageResource(image);
 
-        // TODO: Update the board 2D array
+        // TODO (8): Update the board 2D array
         board[indices[0]][indices[1]] = mTurn;
 
-        // TODO: Check if anyone won. Pass the id variable created earlier as a parameter
+        // TODO (9): Check if anyone won. Pass the id variable created earlier as a parameter
         checkWon(id);
 
-        // TODO: Finally, update the mTurn variable.
+        // TODO (10): Finally, update the mTurn variable.
         mTurn = mTurn == Team.LSU ? Team.ALABAMA : Team.LSU;
     }
 
