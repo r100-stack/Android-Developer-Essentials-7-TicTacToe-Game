@@ -223,6 +223,23 @@ public class MainActivity extends AppCompatActivity {
      * Resets the board
      */
     private void resetApp() {
+        // TODO: Set the isBoardActive to true (as now the board should be active and accept input)
+        isBoardActive = true;
 
+        // TODO: Reset the current turn to Team.LSU
+        mTurn = Team.LSU;
+
+        // TODO: board must now be a 3x3 2D array with Team.EMPTY in all the spaces
+        board = new Team[][] {
+                {Team.EMPTY, Team.EMPTY, Team.EMPTY},
+                {Team.EMPTY, Team.EMPTY, Team.EMPTY},
+                {Team.EMPTY, Team.EMPTY, Team.EMPTY}
+        };
+        
+        int[] imageViewIds = new int[]{R.id.iv_00, R.id.iv_01, R.id.iv_02, R.id.iv_10, R.id.iv_11, R.id.iv_12, R.id.iv_20, R.id.iv_21, R.id.iv_22};
+        for (int imageId : imageViewIds) {
+            mIdTileMap.get(imageId).setImageResource(R.drawable.blank_transparent_square);
+            mIdTileMap.get(imageId).setAlpha((float) 1);
+        }
     }
 }
