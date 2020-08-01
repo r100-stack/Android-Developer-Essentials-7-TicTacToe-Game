@@ -46,7 +46,6 @@
 
         </TableRow>
 
-        <!--TODO COMPLETED (1): One row has been done for you. Create two more rows similar to the first row.-->
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"

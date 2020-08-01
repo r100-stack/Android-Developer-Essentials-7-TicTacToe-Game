@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // TODO COMPLETED (2): Use findViewById() to initialize all the above global ImageView variables.
+        
         mIv00 = findViewById(R.id.iv_00);
         mIv01 = findViewById(R.id.iv_01);
         mIv02 = findViewById(R.id.iv_02);
@@ -55,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onTileClicked(View view) {
-        // TODO COMPLETED (3): This method should be called when any tile is clicked.
-        //  Hence, add this to the onClick property of all the tiles (ImageViews)
+
     }
 
     /**
