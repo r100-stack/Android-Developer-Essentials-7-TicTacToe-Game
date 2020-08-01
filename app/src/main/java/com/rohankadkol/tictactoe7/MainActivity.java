@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
      * @param winingIds XML Ids Array of three winning tiles
      */
     private void won(Integer[] winingIds) {
-        // TODO (2): Create an int array of all the XML Ids of all the tiles (ImageViews).
+        // TODO (2): Create an int array with all the XML Ids of all the tiles (ImageViews).
         //  Name it imageViewIds
 
         // TODO (3): Iterate through all the imageViewIds. If a tile is not in the winning combination,
