@@ -100,6 +100,17 @@ public class MainActivity extends AppCompatActivity {
      */
     private void checkWon(int tileId) {
         // TODO (1): Similar to the first three switch cases, write switch cases for all the remaining tiles
+        switch (tileId) {
+            case R.id.iv_00:
+                isBoardActive = !(horizontal1() || diagonal1() || vertical1());
+                break;
+            case R.id.iv_01:
+                isBoardActive = !(horizontal1() || vertical2());
+                break;
+            case R.id.iv_02:
+                isBoardActive = !(horizontal1() || diagonal2() || vertical3());
+                break;
+        }
     }
 
     private boolean horizontal1() {
