@@ -110,6 +110,44 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private boolean horizontal1() {
+        if (areThreeEqual(board[0][0], board[0][1], board[0][2])) {
+            won(new Integer[]{R.id.iv_00, R.id.iv_01, R.id.iv_02});
+            return true;
+        }
+        return false;
+    }
+
+    private boolean horizontal2() {
+        if (areThreeEqual(board[1][0], board[1][1], board[1][2])) {
+            won(new Integer[]{R.id.iv_10, R.id.iv_11, R.id.iv_12});
+            return true;
+        }
+        return false;
+    }
+
+    private boolean horizontal3() {
+        if (areThreeEqual(board[2][0], board[2][1], board[2][2])) {
+            won(new Integer[]{R.id.iv_20, R.id.iv_21, R.id.iv_22});
+            return true;
+        }
+        return false;
+    }
+
+    // TODO (1): Similar to the above three methods, add checkWin methods for vertical1, vertical2, vertical3, diagonal1, diagonal2
+
+    /**
+     * Checks if the passed three parameters are equal
+     * @param a Parameter 1
+     * @param b Parameter 2
+     * @param c Parameter 3
+     * @param <T>
+     * @return True if a, b, and c are equal. Else, false
+     */
+    private <T> boolean areThreeEqual(T a, T b, T c) {
+        return a == b && b == c;
+    }
+
     /**
      * Resets the board
      */
