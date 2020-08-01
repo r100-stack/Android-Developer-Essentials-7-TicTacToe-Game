@@ -102,14 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Call this when you found a winning combination
-     * @param winingIds XML Ids Array of three winning tiles
-     */
-    private void won(Integer[] winingIds) {
-
-    }
-
     private boolean horizontal1() {
         if (areThreeEqual(board[0][0], board[0][1], board[0][2])) {
             won(new Integer[]{R.id.iv_00, R.id.iv_01, R.id.iv_02});
@@ -135,6 +127,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // TODO (1): Similar to the above three methods, add checkWin methods for vertical1, vertical2, vertical3, diagonal1, diagonal2
+
+    /**
+     * Call this when you found a winning combination
+     * @param winingIds XML Ids Array of three winning tiles
+     */
+    private void won(Integer[] winingIds) {
+
+    }
 
     /**
      * Checks if the passed three parameters are equal
