@@ -235,8 +235,12 @@ public class MainActivity extends AppCompatActivity {
                 {Team.EMPTY, Team.EMPTY, Team.EMPTY},
                 {Team.EMPTY, Team.EMPTY, Team.EMPTY}
         };
-        
+
+        // TODO: Create an int array with all the XML Ids of all the tiles (ImageViews).
+        //  Name it imageViewIds
         int[] imageViewIds = new int[]{R.id.iv_00, R.id.iv_01, R.id.iv_02, R.id.iv_10, R.id.iv_11, R.id.iv_12, R.id.iv_20, R.id.iv_21, R.id.iv_22};
+
+        
         for (int imageId : imageViewIds) {
             mIdTileMap.get(imageId).setImageResource(R.drawable.blank_transparent_square);
             mIdTileMap.get(imageId).setAlpha((float) 1);
