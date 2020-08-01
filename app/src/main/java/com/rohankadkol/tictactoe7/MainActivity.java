@@ -110,6 +110,24 @@ public class MainActivity extends AppCompatActivity {
             case R.id.iv_02:
                 isBoardActive = !(horizontal1() || diagonal2() || vertical3());
                 break;
+            case R.id.iv_10:
+                isBoardActive = !(horizontal2() || vertical1());
+                break;
+            case R.id.iv_11:
+                isBoardActive = !(horizontal2() ||  diagonal1() || vertical2() || diagonal2());
+                break;
+            case R.id.iv_12:
+                isBoardActive = !(vertical3() || horizontal2());
+                break;
+            case R.id.iv_20:
+                isBoardActive = !(vertical1() || diagonal2() || horizontal3());
+                break;
+            case R.id.iv_21:
+                isBoardActive = !(vertical2() || horizontal3());
+                break;
+            case R.id.iv_22:
+                isBoardActive = !(vertical3() || diagonal1() || horizontal3());
+                break;
         }
     }
 
@@ -184,9 +202,15 @@ public class MainActivity extends AppCompatActivity {
     private void won(Integer[] winingIds) {
         // TODO (2): Create an int array of all the XML Ids of all the tiles (ImageViews).
         //  Name it imageViewIds
+        int[] imageViewIds = new int[]{R.id.iv_00, R.id.iv_01, R.id.iv_02, R.id.iv_10, R.id.iv_11, R.id.iv_12, R.id.iv_20, R.id.iv_21, R.id.iv_22};
 
         // TODO (3): Iterate through all the imageViewIds. If a tile is not in the winning combination,
         //  then set its alpha (opaqueness) to .4
+        for (int imageId : imageViewIds) {
+            if (imageId != winingIds[0] && imageId != winingIds[1] && imageId != winingIds[2]) {
+                mIdTileMap.get(imageId).setAlpha((float) 0.4);
+            }
+        }
     }
 
     /**
