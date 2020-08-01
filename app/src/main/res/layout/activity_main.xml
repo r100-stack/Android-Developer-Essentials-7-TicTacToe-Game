@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--TODO (1): Add an ImageView-->
+    <!--TODO (2): android:src = tictactoe_background-->
+    <!--TODO (3): Constrain it such that it completely spans the TableLayout-->
+    <!--TODO (4): Set the height and width to 0 for it to match_constraints-->
+    <!--TODO (5): Set the scaleType to fitXY. This will stretch the image to fit the ImageView container-->
+
     <TableLayout
         android:id="@+id/table_layout"
         android:layout_width="match_parent"
