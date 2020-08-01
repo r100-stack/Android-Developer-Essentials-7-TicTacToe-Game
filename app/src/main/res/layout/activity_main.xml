@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/table_layout"
-        app:layout_constraintEnd_toEndOf="@id/table_layout"
-        app:layout_constraintTop_toTopOf="@id/table_layout"
-        app:layout_constraintBottom_toBottomOf="@id/table_layout"
-        android:src="@drawable/tictactoe_background"
-        android:scaleType="fitXY"/>
-
     <TableLayout
         android:id="@+id/table_layout"
         android:layout_width="match_parent"
@@ -56,67 +46,7 @@
 
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/iv_10"
-                android:layout_weight="1"
-                android:onClick="onTileClicked"
-                android:src="@drawable/blank_transparent_square"
-                tools:src="@drawable/lsu_logo" />
-
-            <ImageView
-                android:id="@+id/iv_11"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:onClick="onTileClicked"
-                android:src="@drawable/blank_transparent_square"
-                tools:src="@drawable/lsu_logo" />
-
-            <ImageView
-                android:id="@+id/iv_12"
-                android:layout_weight="1"
-                android:onClick="onTileClicked"
-                android:src="@drawable/blank_transparent_square"
-                tools:src="@drawable/lsu_logo" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/iv_20"
-                android:layout_weight="1"
-                android:onClick="onTileClicked"
-                android:src="@drawable/blank_transparent_square"
-                tools:src="@drawable/lsu_logo" />
-
-            <ImageView
-                android:id="@+id/iv_21"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:onClick="onTileClicked"
-                android:src="@drawable/blank_transparent_square"
-                tools:src="@drawable/lsu_logo" />
-
-            <ImageView
-                android:id="@+id/iv_22"
-                android:layout_weight="1"
-                android:onClick="onTileClicked"
-                android:src="@drawable/blank_transparent_square"
-                tools:src="@drawable/lsu_logo" />
-
-        </TableRow>
+        <!--TODO (1): One row has been done for you. Create two more rows similar to the first row.-->
 
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
