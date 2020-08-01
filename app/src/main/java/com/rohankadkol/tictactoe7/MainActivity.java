@@ -127,6 +127,45 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // TODO (1): Similar to the above three methods, add checkWin methods for vertical1, vertical2, vertical3, diagonal1, diagonal2
+    private boolean vertical1() {
+        if (areThreeEqual(board[0][0], board[1][0], board[2][0])) {
+            won(new Integer[]{R.id.iv_00, R.id.iv_10, R.id.iv_20});
+            return true;
+        }
+        return false;
+    }
+
+    private boolean vertical2() {
+        if (areThreeEqual(board[0][1], board[1][1], board[2][1])) {
+            won(new Integer[]{R.id.iv_01, R.id.iv_11, R.id.iv_21});
+            return true;
+        }
+        return false;
+    }
+
+    private boolean vertical3() {
+        if (areThreeEqual(board[0][2], board[1][2], board[2][2])) {
+            won(new Integer[]{R.id.iv_02, R.id.iv_12, R.id.iv_22});
+            return true;
+        }
+        return false;
+    }
+
+    private boolean diagonal1() {
+        if (areThreeEqual(board[0][0], board[1][1], board[2][2])) {
+            won(new Integer[]{R.id.iv_00, R.id.iv_11, R.id.iv_22});
+            return true;
+        }
+        return false;
+    }
+
+    private boolean diagonal2() {
+        if (areThreeEqual(board[0][2], board[1][1], board[2][0])) {
+            won(new Integer[]{R.id.iv_02, R.id.iv_11, R.id.iv_20});
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Call this when you found a winning combination
