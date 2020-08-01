@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
      * @param tileId The XML id for the pressed tile.
      */
     private void checkWon(int tileId) {
-        // TODO (1): Similar to the first three switch cases, write switch cases for all the remaining tiles
         switch (tileId) {
             case R.id.iv_00:
                 isBoardActive = !(horizontal1() || diagonal1() || vertical1());
@@ -200,12 +199,7 @@ public class MainActivity extends AppCompatActivity {
      * @param winingIds XML Ids Array of three winning tiles
      */
     private void won(Integer[] winingIds) {
-        // TODO (2): Create an int array of all the XML Ids of all the tiles (ImageViews).
-        //  Name it imageViewIds
         int[] imageViewIds = new int[]{R.id.iv_00, R.id.iv_01, R.id.iv_02, R.id.iv_10, R.id.iv_11, R.id.iv_12, R.id.iv_20, R.id.iv_21, R.id.iv_22};
-
-        // TODO (3): Iterate through all the imageViewIds. If a tile is not in the winning combination,
-        //  then set its alpha (opaqueness) to .4
         for (int imageId : imageViewIds) {
             if (imageId != winingIds[0] && imageId != winingIds[1] && imageId != winingIds[2]) {
                 mIdTileMap.get(imageId).setAlpha((float) 0.4);
